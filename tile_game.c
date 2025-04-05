@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-int *get_compressed(int *written, int max) {
+int *get_compressed(int *written, int max) { // function
   int *compressed = calloc(max, sizeof(int));
   int value = 0;
   for (int i = 0; i < max; i++) {
@@ -15,7 +15,7 @@ int *get_compressed(int *written, int max) {
   return compressed;
 }
 
-uint64_t serialize(struct game_state state) {
+uint64_t serialize(struct game_state state) { // function
   uint64_t buffer = 0;
   int positions[16] = {0};
   for (int row = 0; row < 4; row++) {
@@ -61,7 +61,7 @@ uint64_t serialize(struct game_state state) {
   return buffer;
 }
 
-int *get_decompressed(int *read, int max) {
+int *get_decompressed(int *read, int max) { // function
   int *decompressed = calloc(max, sizeof(int));
   int out_idx = 0;
   for (int i = 0; i < max; i++) {
@@ -73,12 +73,12 @@ int *get_decompressed(int *read, int max) {
   return decompressed;
 }
 
-int read_top(uint64_t buf, int sz) {
+int read_top(uint64_t buf, int sz) { // function
   uint64_t mask = (1 << sz) - 1;
   return (buf & (mask << (64 - sz))) >> (64 - sz);
 }
 
-struct game_state deserialize(uint64_t buffer) {
+struct game_state deserialize(uint64_t buffer) { // function
   struct game_state state = {0};
   int positions_read[16] = {0};
 
@@ -138,7 +138,7 @@ struct game_state deserialize(uint64_t buffer) {
   return state;
 }
 
-void move_up(struct game_state *state) {
+void move_up(struct game_state *state) { // function
   if (state->empty_row == 3)
     return;
   state->tiles[state->empty_row][state->empty_col] =
@@ -148,7 +148,7 @@ void move_up(struct game_state *state) {
   state->num_steps++;
 }
 
-void move_down(struct game_state *state) {
+void move_down(struct game_state *state) { // function
   if (state->empty_row == 0)
     return;
   state->tiles[state->empty_row][state->empty_col] =
@@ -158,7 +158,7 @@ void move_down(struct game_state *state) {
   state->num_steps++;
 }
 
-void move_left(struct game_state *state) {
+void move_left(struct game_state *state) { // function
   if (state->empty_col == 3)
     return;
   state->tiles[state->empty_row][state->empty_col] =
@@ -168,7 +168,7 @@ void move_left(struct game_state *state) {
   state->num_steps++;
 }
 
-void move_right(struct game_state *state) {
+void move_right(struct game_state *state) { // function
   if (state->empty_col == 0)
     return;
   state->tiles[state->empty_row][state->empty_col] =

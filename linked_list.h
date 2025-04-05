@@ -11,6 +11,7 @@ struct list_node {
 
 struct linked_list {
   struct list_node *head;
+  int count;
 };
 
 void insert_at_head(struct linked_list *list, size_t value);

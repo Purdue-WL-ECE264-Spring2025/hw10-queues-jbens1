@@ -13,4 +13,6 @@ struct game_state dequeue(struct queue *q);
 
 int number_of_moves(struct game_state start);
 
+bool solved(struct queue *q);
+
 #endif
